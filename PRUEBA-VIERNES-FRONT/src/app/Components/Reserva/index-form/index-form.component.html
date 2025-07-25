@@ -1,0 +1,49 @@
+<h1>RESERVAAA</h1>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Pedidos</mat-card-title>
+    <button mat-raised-button color="primary" (click)="openFormCreate()">Agregar
+      Pedido</button>
+  </mat-card-header>
+
+  <mat-table [dataSource]="forms" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="nombreCliente">
+      <mat-header-cell *matHeaderCellDef>Nombre Cliente</mat-header-cell>
+      <mat-cell *matCellDef="let rol">{{rol.nombre}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="nombrePizza">
+      <mat-header-cell *matHeaderCellDef>Pizza</mat-header-cell>
+      <mat-cell *matCellDef="let rol">{{rol.nombePizza}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="cantidad">
+      <mat-header-cell *matHeaderCellDef>Cantidad</mat-header-cell>
+      <mat-cell *matCellDef="let rol">{{rol.cantidad}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="estadoPedido">
+      <mat-header-cell *matHeaderCellDef>Estado Pedido</mat-header-cell>
+      <mat-cell *matCellDef="let rol">{{rol.estadoPedido}}</mat-cell>
+    </ng-container>
+
+     <ng-container matColumnDef="fecha">
+      <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+      <mat-cell *matCellDef="let rol">{{rol.fecha}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+      <mat-cell *matCellDef="let rol">
+        <button mat-icon-button (click)="editforms(formseleccionado = rol)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteforms(rol)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</mat-card>
